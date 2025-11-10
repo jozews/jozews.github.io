@@ -1,0 +1,15 @@
+body {
+    background: #262121;
+    color: #ded9d9;
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    line-height: 28px;
+    margin: 0;
+    display: block;
+    margin: 8px;
+}
+
+.div-centered {
+    justify-content: center;
+    display: flex;
+}

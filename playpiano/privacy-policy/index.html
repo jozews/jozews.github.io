@@ -4,15 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Privacy & Terms - Play Piano</title>
-    <style>
-        /* --- DESIGN TOKENS --- */
+<style>
+        /* --- DESIGN TOKENS (Play Piano Palette) --- */
         :root {
-            --primary-color: #2563eb;       
-            --bg-color: #f8fafc;            
-            --surface-color: #ffffff;       
-            --text-main: #1e293b;           
-            --text-muted: #64748b;          
-            --accent-color: #dbeafe;        
+            --primary-color: #333f9e;       /* App's blue */
+            --bg-color: #262121;            /* App's blackBackground */
+            --surface-color: #333f3f;       /* App's black */
+            --text-main: #99bdbd;           /* App's white */
+            --text-muted: #ddd8d8;          /* App's whiteBackground (used for lighter text/contrast) */
+            --accent-color: #191f4f;        /* App's blueContour for banner background */
             --border-radius: 12px;
             --font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         }
@@ -46,7 +46,7 @@
             height: 100px;
             border-radius: 20px;
             margin-bottom: 20px;
-            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.3);
         }
 
         h1 {
@@ -54,12 +54,14 @@
             font-weight: 800;
             letter-spacing: -0.02em;
             margin-bottom: 10px;
+            color: var(--text-muted);
         }
 
         .last-updated {
             color: var(--text-muted);
             font-size: 0.9rem;
             font-weight: 500;
+            opacity: 0.8;
         }
 
         /* --- DEVELOPER'S COMMITMENT BANNER --- */
@@ -73,7 +75,7 @@
 
         .commitment-banner h2 {
             font-size: 1.25rem;
-            color: var(--primary-color);
+            color: var(--text-muted);
             margin-bottom: 10px;
             display: flex;
             align-items: center;
@@ -85,19 +87,33 @@
             background: var(--surface-color);
             padding: 40px;
             border-radius: var(--border-radius);
-            box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
         }
 
-        h2 { font-size: 1.75rem; margin: 2.5rem 0 1rem; border-bottom: 2px solid #e2e8f0; padding-bottom: 0.5rem; color: #0f172a; }
+        h2 { 
+            font-size: 1.75rem; 
+            margin: 2.5rem 0 1rem; 
+            border-bottom: 2px solid var(--bg-color); 
+            padding-bottom: 0.5rem; 
+            color: var(--text-muted); 
+        }
         h2:first-of-type { margin-top: 0; }
-        h3 { font-size: 1.25rem; margin: 1.5rem 0 0.75rem; color: #334155; }
+        
+        h3 { 
+            font-size: 1.25rem; 
+            margin: 1.5rem 0 0.75rem; 
+            color: var(--text-muted); 
+        }
         
         p { margin-bottom: 1rem; color: var(--text-main); }
         
         ul { margin-bottom: 1.5rem; padding-left: 1.5rem; }
         li { margin-bottom: 0.5rem; }
         
-        strong { color: #0f172a; }
+        strong { color: var(--text-muted); }
+        
+        a { color: var(--primary-color); text-decoration: none; font-weight: 600; }
+        a:hover { text-decoration: underline; }
 
         /* --- RESPONSIVE DESIGN --- */
         @media (max-width: 600px) {

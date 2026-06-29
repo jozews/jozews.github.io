@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Play Piano - Master Your Repertoire</title>
+    <style>
+        /* --- DESIGN TOKENS (Play Piano Dark Palette) --- */
+        :root {
+            --bg-color: #262121;            
+            --surface-color: #333f3f;       
+            --text-main: #ddd8d8;           
+            --text-muted: #99bdbd;          
+            --accent-color: #338c9e;        /* The Premium Purple */
+            --border-radius: 16px;
+            --font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        /* --- GLOBAL RESET & BASE --- */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            font-family: var(--font-family);
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        /* --- LAYOUT --- */
+        .container {
+            max-width: 1100px; 
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* --- NAVIGATION --- */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        nav img {
+            height: 40px;
+            border-radius: 8px;
+        }
+
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.2s;
+        }
+
+        nav a:hover {
+            color: var(--accent-color);
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            text-align: center;
+            padding: 80px 20px 60px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            margin-bottom: 20px;
+            color: var(--text-main);
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto 40px;
+        }
+
+        /* Call to Action Button */
+        .cta-button {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: var(--text-main);
+            padding: 16px 32px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 30px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            transition: transform 0.2s, background-color 0.2s;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            background-color: #2b7787; /* slightly darker purple/teal */
+        }
+
+        .hero-image {
+            max-width: 100%;
+            height: auto;
+            margin-top: 60px;
+            border-radius: var(--border-radius);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+        }
+
+        /* --- FEATURE ROWS --- */
+        .feature-section {
+            padding: 80px 0;
+        }
+
+        .feature-row {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+            margin-bottom: 80px;
+        }
+
+        .feature-row:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .feature-text {
+            flex: 1;
+        }
+
+        .feature-text h2 {
+            font-size: 2rem;
+            margin-bottom: 16px;
+            color: var(--text-main);
+        }
+
+        .feature-text p {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+        }
+
+        .feature-image {
+            flex: 1;
+        }
+
+        .feature-image img {
+            width: 100%;
+            border-radius: var(--border-radius);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            border-top: 1px solid var(--surface-color);
+            margin-top: 40px;
+            color: var(--text-muted);
+        }
+
+        footer a {
+            color: var(--accent-color);
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        /* --- RESPONSIVE DESIGN --- */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .feature-row, .feature-row:nth-child(even) {
+                flex-direction: column;
+                text-align: center;
+                gap: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <nav>
+            <img src="logo.png" alt="Play Piano Logo">
+            <a href="privacy-policy/index.html">Privacy & Terms</a>
+        </nav>
+
+        <header class="hero">
+            <h1>Your MIDI Keyboard as a Game Controller</h1>
+            <p>Connect your instrument, place your tablet on the stand, and master classical repertoire with real-time feedback.</p>
+            <a href="https://play.google.com/store/apps/details?id=org.jozews.playpiano&hl=en" class="cta-button" target="_blank" rel="noopener noreferrer">Get it on Google Play</a>
+            
+            <img src="1.jpg" alt="Play Piano Interface" class="hero-image">
+        </header>
+
+        <section class="feature-section">
+            
+            <div class="feature-row">
+                <div class="feature-text">
+                    <h2>Read, Press, and Learn</h2>
+                    <p>Play Piano reads your key presses and guides you through the score. No more guessing if you hit the right notes in complex passages.</p>
+                </div>
+                <div class="feature-image">
+                    <img src="2.jpg" alt="Guided playing interface">
+                </div>
+            </div>
+
+            <div class="feature-row">
+                <div class="feature-text">
+                    <h2>Practice Hands Separately</h2>
+                    <p>Isolate your practice. Play one hand, and let the app perfectly execute the other, helping you master polyphonic textures at your own pace.</p>
+                </div>
+                <div class="feature-image">
+                    <img src="3.jpg" alt="Hand separation feature">
+                </div>
+            </div>
+
+            <div class="feature-row">
+                <div class="feature-text">
+                    <h2>No MIDI? Try Acoustic Mode</h2>
+                    <p>Don't have a digital piano? Our built-in Acoustic Mode uses your device's microphone to detect the notes you play on a traditional acoustic instrument.</p>
+                </div>
+                <div class="feature-image">
+                    <img src="5.jpg" alt="Acoustic Mode interface">
+                </div>
+            </div>
+
+            <div class="feature-row">
+                <div class="feature-text">
+                    <h2>An Expanding Repertoire</h2>
+                    <p>From Beethoven Sonatas to Chopin Scherzos, access a growing library of digitized, highly accurate classical scores tailored for digital learning.</p>
+                </div>
+                <div class="feature-image">
+                    <img src="4.jpg" alt="Repertoire list">
+                </div>
+            </div>
+
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Play Piano. All rights reserved.</p>
+        <p>
+            <a href="privacy-policy/index.html">Privacy Policy & Terms of Service</a> | 
+            <a href="mailto:jozewsro@gmail.com">Contact</a>
+        </p>
+    </footer>
+
+</body>
+</html>

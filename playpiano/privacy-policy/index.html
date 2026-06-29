@@ -8,11 +8,11 @@
         /* --- DESIGN TOKENS (LIGHT MODE DEFAULTS) --- */
         :root {
             --bg-color: #ddd8d8;            /* whiteBackground */
-            --surface-color: #ffffff;       /* Clean white card for reading contrast */
-            --text-main: #262121;           /* blackBackground used for text */
-            --text-muted: #555555;          /* Standard muted text */
-            --accent-color: #338c9e;        /* purple - The Premium highlight */
-            --banner-bg: #f0fdfa;           /* Soft tint for banner */
+            --surface-color: #ffffff;
+            --text-main: #262121;           /* blackBackground */
+            --text-muted: #333f3f;          /* black */
+            --banner-bg: #338c9e;           /* purple */
+            --banner-text: #ffffff;
             --link-color: #338c9e;          /* purple */
             --border-radius: 12px;
             --font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -23,16 +23,17 @@
             :root {
                 --bg-color: #262121;            /* blackBackground */
                 --surface-color: #333f3f;       /* black */
-                --text-main: #99bdbd;           /* white */
-                --text-muted: #ddd8d8;          /* whiteBackground for headers/emphasis */
-                --banner-bg: #1e2525;           /* Deep inset color for banner */
-                --link-color: #67e8f9;          /* Lighter cyan/purple tint for dark mode contrast */
+                --text-main: #ddd8d8;           /* whiteBackground (Fixed contrast) */
+                --text-muted: #99bdbd;          /* white (Used for subheaders) */
+                --banner-bg: #338c9e;           /* purple */
+                --banner-text: #ddd8d8;         /* whiteBackground */
+                --link-color: #338c9e;          /* purple */
             }
         }
 
         /* --- GLOBAL RESET & BASE --- */
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        
+
         body {
             font-family: var(--font-family);
             background-color: var(--bg-color);
@@ -44,7 +45,7 @@
 
         /* --- LAYOUT --- */
         .container {
-            max-width: 900px; /* Bumped slightly for wider screens while maintaining readability */
+            max-width: 900px;
             margin: 0 auto;
             padding: 40px 20px;
         }
@@ -54,7 +55,7 @@
             text-align: center;
             margin-bottom: 40px;
         }
-        
+
         header img {
             width: 100px;
             height: 100px;
@@ -68,32 +69,37 @@
             font-weight: 800;
             letter-spacing: -0.02em;
             margin-bottom: 10px;
-            color: var(--text-muted);
+            color: var(--text-main);
         }
 
         .last-updated {
-            color: var(--text-main);
+            color: var(--text-muted);
             font-size: 0.9rem;
             font-weight: 500;
-            opacity: 0.8;
         }
 
         /* --- DEVELOPER'S COMMITMENT BANNER --- */
         .commitment-banner {
-            background-color: var(--banner-bg);
-            border-left: 4px solid var(--accent-color);
+            background-color: var(--surface-color);
+            color: var(--banner-text);
             padding: 24px;
-            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+            border-radius: var(--border-radius);
             margin-bottom: 40px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
 
         .commitment-banner h2 {
             font-size: 1.25rem;
-            color: var(--accent-color);
+            color: var(--banner-text);
             margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
+            border-bottom: none;
+            padding-bottom: 0;
+            margin-top: 0;
+        }
+
+        .commitment-banner strong {
+            color: var(--banner-text);
+            font-weight: 800;
         }
 
         /* --- CONTENT TYPOGRAPHY --- */
@@ -104,33 +110,33 @@
             box-shadow: 0 4px 12px rgba(0,0,0,0.1);
         }
 
-        h2 { 
-            font-size: 1.75rem; 
-            margin: 2.5rem 0 1rem; 
-            border-bottom: 2px solid var(--bg-color); 
-            padding-bottom: 0.5rem; 
-            color: var(--text-muted); 
+        h2 {
+            font-size: 1.75rem;
+            margin: 2.5rem 0 1rem;
+            border-bottom: 2px solid var(--bg-color);
+            padding-bottom: 0.5rem;
+            color: var(--text-main);
         }
         h2:first-of-type { margin-top: 0; }
-        
-        h3 { 
-            font-size: 1.25rem; 
-            margin: 1.5rem 0 0.75rem; 
-            color: var(--text-muted); 
+
+        h3 {
+            font-size: 1.25rem;
+            margin: 1.5rem 0 0.75rem;
+            color: var(--text-muted);
         }
-        
+
         p { margin-bottom: 1rem; color: var(--text-main); }
-        
+
         ul { margin-bottom: 1.5rem; padding-left: 1.5rem; }
         li { margin-bottom: 0.5rem; }
-        
-        strong { color: var(--text-muted); font-weight: 700; }
-        
-        a { 
-            color: var(--link-color); 
-            text-decoration: underline; 
+
+        strong { color: var(--text-main); font-weight: 700; }
+
+        a {
+            color: var(--link-color);
+            text-decoration: underline;
             text-underline-offset: 4px;
-            font-weight: 600; 
+            font-weight: 600;
         }
         a:hover { opacity: 0.8; }
 
@@ -156,9 +162,10 @@
         </div>
 
         <main class="policy-content">
-            
+
+            <!-- PRIVACY POLICY SECTION -->
             <h2>Privacy Policy</h2>
-            
+
             <h3>1. Zero Data Collection</h3>
             <p>Play Piano collects <strong>absolutely no personal or usage data</strong>. We do not require you to create an account, we do not monitor which pieces you play, and we do not use analytics, crashlytics, or background telemetry. We develop features based on common sense and musical necessity, not by tracking our users.</p>
 
@@ -166,8 +173,9 @@
             <p>The application itself is self-contained. The only time an internet connection is utilized is to securely communicate with the Google Play Store to process or verify Premium purchases. All financial transactions and purchase data are handled entirely by Google's billing infrastructure. We never see, process, or store your credit card information, identity, or Google account details.</p>
             <p>For details on how Google manages the data they collect during standard Play Store transactions, please refer to the <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google Privacy Policy</a>.</p>
 
+            <!-- TERMS OF SERVICE SECTION -->
             <h2>Terms of Service & Premium Agreement</h2>
-            
+
             <h3>1. The Premium Promise</h3>
             <p>Purchasing Premium status in Play Piano is a one-time commitment. Premium users are guaranteed full, unrestricted access to <strong>all currently available composers and sheet music, as well as all future music and composers added to the app.</strong> We will not charge you again for new content additions.</p>
 

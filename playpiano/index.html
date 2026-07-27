@@ -161,6 +161,34 @@
             display: block;
         }
 
+        .dynamic-title-container {
+    font-size: 3rem; /* Adjust to match your hero sizing */
+    font-weight: 800;
+    text-align: center;
+    color: var(--text-main);
+    margin-bottom: 20px;
+}
+
+.animated-text {
+    color: var(--accent-color); /* Makes the composer name pop */
+    display: inline-block;
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* We will toggle this class on and off with JavaScript */
+.animated-text.fade-out {
+    opacity: 0;
+    transform: translateY(-15px); /* Slides up as it fades out */
+}
+
+.animated-text.fade-in-prep {
+    opacity: 0;
+    transform: translateY(15px); /* Moves down invisibly to slide up into place */
+    transition: none; /* Disable transition instantly to reset position */
+}
+
         /* --- FOOTER --- */
         footer {
             text-align: center;
@@ -197,6 +225,8 @@
                 margin-bottom: 25px;
             }
         }
+
+        
     </style>
 </head>
 
@@ -209,6 +239,10 @@
             </a>
         </header>
 
+        <div class="dynamic-title-container">
+            <span class="static-text">Play</span>
+            <span class="animated-text" id="composer-text">Piano</span>  </div>
+            
         <header class="hero">
             <h1>Your MIDI Keyboard as a Game Controller</h1>
             <p>Connect your instrument, place your tablet on the stand, and master classical repertoire with real-time
@@ -267,6 +301,51 @@
             <a href="mailto:jozewsro@gmail.com">Contact</a>
         </p>
     </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // The array of words to cycle through. 
+            const composers = [
+                "Piano",
+                "Beethoven",
+                "Chopin",
+                "Rachmaninoff",
+                "Scriabin",
+                "Haydn",
+                "Satie"
+            ];
+
+            let currentIndex = 0;
+            const textElement = document.getElementById("composer-text");
+
+            // Run the loop every 3 seconds (3000 milliseconds)
+            setInterval(() => {
+                // 1. Trigger the fade out and slide up
+                textElement.classList.add("fade-out");
+
+                // 2. Wait for the fade out to finish (500ms matches our CSS transition)
+                setTimeout(() => {
+                    // Move to the next composer, loop back to 0 if at the end
+                    currentIndex = (currentIndex + 1) % composers.length;
+
+                    // Update the actual text
+                    textElement.textContent = composers[currentIndex];
+
+                    // Instantly snap the word below the baseline while it is invisible
+                    textElement.classList.remove("fade-out");
+                    textElement.classList.add("fade-in-prep");
+
+                    // Force a browser reflow so it registers the starting position
+                    void textElement.offsetWidth;
+
+                    // 3. Remove the prep class to trigger the smooth slide up and fade in
+                    textElement.classList.remove("fade-in-prep");
+
+                }, 500);
+
+            }, 3000);
+        });
+    </script>
 
 </body>
 

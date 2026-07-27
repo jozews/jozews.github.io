@@ -114,67 +114,51 @@
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
         }
 
-        /* --- FEATURE BLOCKS (Refined for Hierarchy & Overlays) --- */
+        /* --- FEATURE BLOCKS (Y-Axis Stacking) --- */
         .feature-section {
             padding: 60px 0;
             display: flex;
             flex-direction: column;
             align-items: center;
-            /* Centers the smaller blocks within the larger container */
+            gap: 100px;
+            /* Generous spacing between sections */
         }
 
         .feature-block {
-            position: relative;
             width: 100%;
             max-width: 800px;
-            /* Noticeably smaller than the 1100px hero container */
-            margin-bottom: 60px;
-            border-radius: var(--border-radius);
-            overflow: hidden;
-            /* Clips the image and overlay to the border radius */
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
-        }
-
-        .feature-block img {
-            width: 100%;
-            display: block;
-            height: auto;
-        }
-
-        /* Overlay to ensure text pops against any screenshot */
-        .feature-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(38, 33, 33, 0.85);
-            /* Uses your root bg-color with opacity */
+            /* Keeps the hierarchy smaller than the hero */
             display: flex;
             flex-direction: column;
-            justify-content: center;
             align-items: center;
-            padding: 40px;
             text-align: center;
         }
 
         .feature-text {
-            position: relative;
-            z-index: 2;
+            margin-bottom: 40px;
+            /* Space between the text and the screenshot */
         }
 
         .feature-text h2 {
             font-size: 2.2rem;
             margin-bottom: 16px;
-            color: #ffffff;
-            /* Bright white for high contrast */
+            color: var(--text-main);
         }
 
         .feature-text p {
             font-size: 1.15rem;
-            color: var(--text-main);
+            color: var(--text-muted);
             max-width: 600px;
             margin: 0 auto;
+        }
+
+        .feature-block img {
+            width: 100%;
+            height: auto;
+            border-radius: var(--border-radius);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+            /* Gives the screenshots that nice floating effect */
+            display: block;
         }
 
         /* --- FOOTER --- */
@@ -197,8 +181,8 @@
                 font-size: 2.5rem;
             }
 
-            .feature-overlay {
-                padding: 20px;
+            .feature-section {
+                gap: 60px;
             }
 
             .feature-text h2 {
@@ -207,6 +191,10 @@
 
             .feature-text p {
                 font-size: 1rem;
+            }
+
+            .feature-text {
+                margin-bottom: 25px;
             }
         }
     </style>
@@ -234,47 +222,39 @@
         <section class="feature-section">
 
             <div class="feature-block">
+                <div class="feature-text">
+                    <h2>Read, Press, and Learn</h2>
+                    <p>Play Piano reads your key presses and guides you through the score. No more guessing if you hit
+                        the right notes in complex passages.</p>
+                </div>
                 <img src="/assets/screenshot-2.png" alt="Guided playing interface">
-                <div class="feature-overlay">
-                    <div class="feature-text">
-                        <h2>Read, Press, and Learn</h2>
-                        <p>Play Piano reads your key presses and guides you through the score. No more guessing if you
-                            hit the right notes in complex passages.</p>
-                    </div>
-                </div>
             </div>
 
             <div class="feature-block">
+                <div class="feature-text">
+                    <h2>Practice Hands Separately</h2>
+                    <p>Isolate your practice. Play one hand, and let the app perfectly execute the other, helping you
+                        master polyphonic textures at your own pace.</p>
+                </div>
                 <img src="/assets/screenshot-3.png" alt="Hand separation feature">
-                <div class="feature-overlay">
-                    <div class="feature-text">
-                        <h2>Practice Hands Separately</h2>
-                        <p>Isolate your practice. Play one hand, and let the app perfectly execute the other, helping
-                            you master polyphonic textures at your own pace.</p>
-                    </div>
-                </div>
             </div>
 
             <div class="feature-block">
+                <div class="feature-text">
+                    <h2>No MIDI? Try Acoustic Mode</h2>
+                    <p>Don't have a digital piano? Our built-in Acoustic Mode uses your device's microphone to detect
+                        the notes you play on a traditional acoustic instrument.</p>
+                </div>
                 <img src="/assets/screenshot-5.png" alt="Acoustic Mode interface">
-                <div class="feature-overlay">
-                    <div class="feature-text">
-                        <h2>No MIDI? Try Acoustic Mode</h2>
-                        <p>Don't have a digital piano? Our built-in Acoustic Mode uses your device's microphone to
-                            detect the notes you play on a traditional acoustic instrument.</p>
-                    </div>
-                </div>
             </div>
 
             <div class="feature-block">
-                <img src="/assets/screenshot-4.png" alt="Repertoire list">
-                <div class="feature-overlay">
-                    <div class="feature-text">
-                        <h2>An Expanding Repertoire</h2>
-                        <p>From Beethoven Sonatas to Chopin Scherzos, access a growing library of digitized, highly
-                            accurate classical scores tailored for digital learning.</p>
-                    </div>
+                <div class="feature-text">
+                    <h2>An Expanding Repertoire</h2>
+                    <p>From Beethoven Sonatas to Chopin Scherzos, access a growing library of digitized, highly accurate
+                        classical scores tailored for digital learning.</p>
                 </div>
+                <img src="/assets/screenshot-4.png" alt="Repertoire list">
             </div>
 
         </section>

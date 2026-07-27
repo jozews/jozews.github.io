@@ -161,32 +161,48 @@
             display: block;
         }
 
-        .dynamic-title-container {
-    font-size: 3rem; /* Adjust to match your hero sizing */
+/* --- DYNAMIC TITLE STYLES --- */
+.dynamic-title-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Splits the container exactly in half */
+    gap: 12px; /* The space between "Play" and the composer name */
+    font-size: 3rem;
     font-weight: 800;
-    text-align: center;
-    color: var(--text-main);
     margin-bottom: 20px;
+    width: 100%;
+}
+
+.static-text {
+    text-align: right; /* Pushes "Play" to anchor at the center line */
+    color: var(--text-main);
+}
+
+.animated-text-container {
+    text-align: left; /* Anchors the changing text to the center line */
 }
 
 .animated-text {
-    color: var(--accent-color); /* Makes the composer name pop */
     display: inline-block;
-    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out, color 0.3s ease-in-out;
     opacity: 1;
     transform: translateY(0);
+    color: var(--text-main); /* Defaults to white/grey for "Piano" */
 }
 
-/* We will toggle this class on and off with JavaScript */
+/* This class gets added via JS for the composers */
+.animated-text.is-composer {
+    color: var(--accent-color);
+}
+
 .animated-text.fade-out {
     opacity: 0;
-    transform: translateY(-15px); /* Slides up as it fades out */
+    transform: translateY(-15px);
 }
 
 .animated-text.fade-in-prep {
     opacity: 0;
-    transform: translateY(15px); /* Moves down invisibly to slide up into place */
-    transition: none; /* Disable transition instantly to reset position */
+    transform: translateY(15px);
+    transition: none; 
 }
 
         /* --- FOOTER --- */
@@ -241,8 +257,11 @@
 
         <div class="dynamic-title-container">
             <span class="static-text">Play</span>
-            <span class="animated-text" id="composer-text">Piano</span>  </div>
-            
+            <div class="animated-text-container">
+                <span class="animated-text" id="composer-text">Piano</span>
+            </div>
+        </div>
+
         <header class="hero">
             <h1>Your MIDI Keyboard as a Game Controller</h1>
             <p>Connect your instrument, place your tablet on the stand, and master classical repertoire with real-time
@@ -304,7 +323,6 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", () => {
-            // The array of words to cycle through. 
             const composers = [
                 "Piano",
                 "Beethoven",
@@ -314,35 +332,36 @@
                 "Haydn",
                 "Satie"
             ];
-
+    
             let currentIndex = 0;
             const textElement = document.getElementById("composer-text");
-
-            // Run the loop every 3 seconds (3000 milliseconds)
+    
             setInterval(() => {
-                // 1. Trigger the fade out and slide up
                 textElement.classList.add("fade-out");
-
-                // 2. Wait for the fade out to finish (500ms matches our CSS transition)
+    
                 setTimeout(() => {
-                    // Move to the next composer, loop back to 0 if at the end
                     currentIndex = (currentIndex + 1) % composers.length;
-
-                    // Update the actual text
-                    textElement.textContent = composers[currentIndex];
-
-                    // Instantly snap the word below the baseline while it is invisible
+                    const currentWord = composers[currentIndex];
+                    
+                    // Update the text
+                    textElement.textContent = currentWord;
+    
+                    // Color Logic: Accent color for composers, main text color for "Piano"
+                    if (currentWord === "Piano") {
+                        textElement.classList.remove("is-composer");
+                    } else {
+                        textElement.classList.add("is-composer");
+                    }
+    
                     textElement.classList.remove("fade-out");
                     textElement.classList.add("fade-in-prep");
-
-                    // Force a browser reflow so it registers the starting position
+    
                     void textElement.offsetWidth;
-
-                    // 3. Remove the prep class to trigger the smooth slide up and fade in
+    
                     textElement.classList.remove("fade-in-prep");
-
+    
                 }, 500);
-
+    
             }, 3000);
         });
     </script>

@@ -1,23 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Play Piano App</title>
     <style>
-
-:root {
-            --bg-color: #262121;            
-            --surface-color: #333f3f;       
-            --text-main: #ddd8d8;           
-            --text-muted: #99bdbd;          
-            --accent-color: #338c9e;  
+        :root {
+            --bg-color: #262121;
+            --surface-color: #333f3f;
+            --text-main: #ddd8d8;
+            --text-muted: #99bdbd;
+            --accent-color: #338c9e;
             --border-radius: 16px;
             --font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         }
 
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
         body {
             font-family: var(--font-family);
             background-color: var(--bg-color);
@@ -28,7 +32,7 @@
         }
 
         .container {
-            max-width: 1100px; 
+            max-width: 1100px;
             margin: 0 auto;
             padding: 40px 20px;
         }
@@ -37,7 +41,7 @@
             text-align: center;
             margin-bottom: 40px;
         }
-        
+
         .logo {
             width: 100px;
             height: 100px;
@@ -93,13 +97,13 @@
             font-weight: 700;
             text-decoration: none;
             border-radius: 30px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
             transition: transform 0.2s, background-color 0.2s;
         }
 
         .cta-button:hover {
             transform: translateY(-2px);
-            background-color: #2b7787; /* slightly darker purple/teal */
+            background-color: #2b7787;
         }
 
         .hero-image {
@@ -107,48 +111,70 @@
             height: auto;
             margin-top: 60px;
             border-radius: var(--border-radius);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
         }
 
-        /* --- FEATURE ROWS --- */
+        /* --- FEATURE BLOCKS (Refined for Hierarchy & Overlays) --- */
         .feature-section {
-            padding: 80px 0;
-        }
-
-        .feature-row {
+            padding: 60px 0;
             display: flex;
+            flex-direction: column;
             align-items: center;
-            gap: 60px;
-            margin-bottom: 80px;
+            /* Centers the smaller blocks within the larger container */
         }
 
-        .feature-row:nth-child(even) {
-            flex-direction: row-reverse;
+        .feature-block {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            /* Noticeably smaller than the 1100px hero container */
+            margin-bottom: 60px;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            /* Clips the image and overlay to the border radius */
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+        }
+
+        .feature-block img {
+            width: 100%;
+            display: block;
+            height: auto;
+        }
+
+        /* Overlay to ensure text pops against any screenshot */
+        .feature-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(38, 33, 33, 0.85);
+            /* Uses your root bg-color with opacity */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 40px;
+            text-align: center;
         }
 
         .feature-text {
-            flex: 1;
+            position: relative;
+            z-index: 2;
         }
 
         .feature-text h2 {
-            font-size: 2rem;
+            font-size: 2.2rem;
             margin-bottom: 16px;
-            color: var(--text-main);
+            color: #ffffff;
+            /* Bright white for high contrast */
         }
 
         .feature-text p {
-            font-size: 1.1rem;
-            color: var(--text-muted);
-        }
-
-        .feature-image {
-            flex: 1;
-        }
-
-        .feature-image img {
-            width: 100%;
-            border-radius: var(--border-radius);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            font-size: 1.15rem;
+            color: var(--text-main);
+            max-width: 600px;
+            margin: 0 auto;
         }
 
         /* --- FOOTER --- */
@@ -167,15 +193,25 @@
         }
 
         @media (max-width: 768px) {
-            .hero h1 { font-size: 2.5rem; }
-            .feature-row, .feature-row:nth-child(even) {
-                flex-direction: column;
-                text-align: center;
-                gap: 30px;
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .feature-overlay {
+                padding: 20px;
+            }
+
+            .feature-text h2 {
+                font-size: 1.8rem;
+            }
+
+            .feature-text p {
+                font-size: 1rem;
             }
         }
     </style>
 </head>
+
 <body>
 
     <div class="container">
@@ -187,51 +223,57 @@
 
         <header class="hero">
             <h1>Your MIDI Keyboard as a Game Controller</h1>
-            <p>Connect your instrument, place your tablet on the stand, and master classical repertoire with real-time feedback.</p>
-            <a href="https://play.google.com/store/apps/details?id=org.jozews.playpiano&hl=en" class="cta-button" target="_blank" rel="noopener noreferrer">See on Google Play</a>
-            
+            <p>Connect your instrument, place your tablet on the stand, and master classical repertoire with real-time
+                feedback.</p>
+            <a href="https://play.google.com/store/apps/details?id=org.jozews.playpiano&hl=en" class="cta-button"
+                target="_blank" rel="noopener noreferrer">See on Google Play</a>
+
             <img src="/assets/screenshot-1.png" alt="Play Piano Interface" class="hero-image">
         </header>
 
         <section class="feature-section">
-            
-            <div class="feature-row">
-                <div class="feature-text">
-                    <h2>Read, Press, and Learn</h2>
-                    <p>Play Piano reads your key presses and guides you through the score. No more guessing if you hit the right notes in complex passages.</p>
-                </div>
-                <div class="feature-image">
-                    <img src="/assets/screenshot-2.png" alt="Guided playing interface">
+
+            <div class="feature-block">
+                <img src="/assets/screenshot-2.png" alt="Guided playing interface">
+                <div class="feature-overlay">
+                    <div class="feature-text">
+                        <h2>Read, Press, and Learn</h2>
+                        <p>Play Piano reads your key presses and guides you through the score. No more guessing if you
+                            hit the right notes in complex passages.</p>
+                    </div>
                 </div>
             </div>
 
-            <div class="feature-row">
-                <div class="feature-text">
-                    <h2>Practice Hands Separately</h2>
-                    <p>Isolate your practice. Play one hand, and let the app perfectly execute the other, helping you master polyphonic textures at your own pace.</p>
-                </div>
-                <div class="feature-image">
-                    <img src="/assets/screenshot-3.png" alt="Hand separation feature">
-                </div>
-            </div>
-
-            <div class="feature-row">
-                <div class="feature-text">
-                    <h2>No MIDI? Try Acoustic Mode</h2>
-                    <p>Don't have a digital piano? Our built-in Acoustic Mode uses your device's microphone to detect the notes you play on a traditional acoustic instrument.</p>
-                </div>
-                <div class="feature-image">
-                    <img src="/assets/screenshot-5.png" alt="Acoustic Mode interface">
+            <div class="feature-block">
+                <img src="/assets/screenshot-3.png" alt="Hand separation feature">
+                <div class="feature-overlay">
+                    <div class="feature-text">
+                        <h2>Practice Hands Separately</h2>
+                        <p>Isolate your practice. Play one hand, and let the app perfectly execute the other, helping
+                            you master polyphonic textures at your own pace.</p>
+                    </div>
                 </div>
             </div>
 
-            <div class="feature-row">
-                <div class="feature-text">
-                    <h2>An Expanding Repertoire</h2>
-                    <p>From Beethoven Sonatas to Chopin Scherzos, access a growing library of digitized, highly accurate classical scores tailored for digital learning.</p>
+            <div class="feature-block">
+                <img src="/assets/screenshot-5.png" alt="Acoustic Mode interface">
+                <div class="feature-overlay">
+                    <div class="feature-text">
+                        <h2>No MIDI? Try Acoustic Mode</h2>
+                        <p>Don't have a digital piano? Our built-in Acoustic Mode uses your device's microphone to
+                            detect the notes you play on a traditional acoustic instrument.</p>
+                    </div>
                 </div>
-                <div class="feature-image">
-                    <img src="/assets/screenshot-4.png" alt="Repertoire list">
+            </div>
+
+            <div class="feature-block">
+                <img src="/assets/screenshot-4.png" alt="Repertoire list">
+                <div class="feature-overlay">
+                    <div class="feature-text">
+                        <h2>An Expanding Repertoire</h2>
+                        <p>From Beethoven Sonatas to Chopin Scherzos, access a growing library of digitized, highly
+                            accurate classical scores tailored for digital learning.</p>
+                    </div>
                 </div>
             </div>
 
@@ -241,10 +283,11 @@
     <footer>
         <p>&copy; 2026 Jože Ws. All rights reserved.</p>
         <p>
-            <a href="privacy-policy/index.html">Privacy Policy & Terms of Service</a> | 
+            <a href="privacy-policy/index.html">Privacy Policy & Terms of Service</a> |
             <a href="mailto:jozewsro@gmail.com">Contact</a>
         </p>
     </footer>
 
 </body>
+
 </html>

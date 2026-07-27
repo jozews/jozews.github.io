@@ -325,44 +325,74 @@
         document.addEventListener("DOMContentLoaded", () => {
             const composers = [
                 "Piano",
+                "Bach",
+                "Haydn",
+                "Mozart",
                 "Beethoven",
+                "Schubert",
+                "Mendelssohn",
                 "Chopin",
+                "Liszt",
+                "Tchaikovsky",
+                "Debussy",
                 "Rachmaninoff",
                 "Scriabin",
-                "Haydn",
+                "Grieg",
                 "Satie"
             ];
     
             let currentIndex = 0;
             const textElement = document.getElementById("composer-text");
+            
+            // Set our dynamic tempos (in milliseconds)
+            const composerTempo = 2500; // Quicker sequence for the composers
+            const tonicTempo = 6000;    // Long, sustained rest on "Piano"
     
-            setInterval(() => {
-                textElement.classList.add("fade-out");
-    
+            function playNextChord() {
+                // Determine how long to hold the current word before animating
+                const currentWord = composers[currentIndex];
+                const holdDuration = (currentWord === "Piano") ? tonicTempo : composerTempo;
+                
                 setTimeout(() => {
-                    currentIndex = (currentIndex + 1) % composers.length;
-                    const currentWord = composers[currentIndex];
-                    
-                    // Update the text
-                    textElement.textContent = currentWord;
-    
-                    // Color Logic: Accent color for composers, main text color for "Piano"
-                    if (currentWord === "Piano") {
-                        textElement.classList.remove("is-composer");
-                    } else {
-                        textElement.classList.add("is-composer");
-                    }
-    
-                    textElement.classList.remove("fade-out");
-                    textElement.classList.add("fade-in-prep");
-    
-                    void textElement.offsetWidth;
-    
-                    textElement.classList.remove("fade-in-prep");
-    
-                }, 500);
-    
-            }, 3000);
+                    // 1. Trigger the fade out
+                    textElement.classList.add("fade-out");
+        
+                    // 2. Wait for the CSS fade out to finish (500ms)
+                    setTimeout(() => {
+                        // Move to the next word
+                        currentIndex = (currentIndex + 1) % composers.length;
+                        const nextWord = composers[currentIndex];
+                        
+                        // Update the text in the DOM
+                        textElement.textContent = nextWord;
+        
+                        // Apply the color logic
+                        if (nextWord === "Piano") {
+                            textElement.classList.remove("is-composer");
+                        } else {
+                            textElement.classList.add("is-composer");
+                        }
+        
+                        // Snap into the prep position instantly
+                        textElement.classList.remove("fade-out");
+                        textElement.classList.add("fade-in-prep");
+        
+                        // Force a reflow
+                        void textElement.offsetWidth;
+        
+                        // Trigger the smooth slide and fade up
+                        textElement.classList.remove("fade-in-prep");
+                        
+                        // 3. Call the function again to create the infinite loop
+                        playNextChord();
+        
+                    }, 500);
+        
+                }, holdDuration);
+            }
+            
+            // Kick off the loop
+            playNextChord();
         });
     </script>
 

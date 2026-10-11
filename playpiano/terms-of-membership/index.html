@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms of Membership - Play Piano</title>
+    <style>
+        :root {
+            --bg-color: #ddd8d8;       
+            --surface-color: #ffffff;
+            --text-main: #262121;         
+            --text-muted: #333f3f;         
+            --banner-bg: #338c9e;           
+            --banner-text: #ffffff;
+            --link-color: #338c9e;          
+            --border-radius: 12px;
+            --font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg-color: #262121;            
+                --surface-color: #333f3f;      
+                --text-main: #ddd8d8;          
+                --text-muted: #99bdbd;          
+                --banner-bg: #338c9e;           
+                --banner-text: #ddd8d8;         
+                --link-color: #338c9e;          
+            }
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        header img {
+            width: 100px;
+            height: 100px;
+            border-radius: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.3);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            margin-bottom: 10px;
+            color: var(--text-main);
+        }
+
+        .subtitle {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            font-weight: 500;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .commitment-banner {
+            background-color: var(--surface-color);
+            color: var(--banner-text);
+            padding: 24px;
+            border-radius: var(--border-radius);
+            margin-bottom: 40px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .commitment-banner h2 {
+            font-size: 1.25rem;
+            color: var(--banner-text);
+            margin-bottom: 10px;
+            border-bottom: none;
+            padding-bottom: 0;
+            margin-top: 0;
+        }
+
+        .commitment-banner strong {
+            color: var(--banner-text);
+            font-weight: 800;
+        }
+
+        .policy-content {
+            background: var(--surface-color);
+            padding: 40px;
+            border-radius: var(--border-radius);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            margin-bottom: 40px;
+        }
+
+        h2 {
+            font-size: 1.75rem;
+            margin: 2.5rem 0 1rem;
+            border-bottom: 2px solid var(--bg-color);
+            padding-bottom: 0.5rem;
+            color: var(--text-main);
+        }
+        h2:first-of-type { margin-top: 0; }
+
+        h3 {
+            font-size: 1.25rem;
+            margin: 1.5rem 0 0.75rem;
+            color: var(--text-muted);
+        }
+
+        p { margin-bottom: 1rem; color: var(--text-main); }
+
+        ul { margin-bottom: 1.5rem; padding-left: 1.5rem; }
+        li { margin-bottom: 0.5rem; color: var(--text-main); }
+
+        strong { color: var(--text-main); font-weight: 700; }
+
+        a {
+            color: var(--link-color);
+            text-decoration: underline;
+            text-underline-offset: 4px;
+            font-weight: 600;
+        }
+        a:hover { opacity: 0.8; }
+
+        @media (max-width: 600px) {
+            .policy-content { padding: 24px; }
+            h1 { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <a href="../index.html">
+                <img src="/assets/logo.png" alt="Play Piano Logo">        
+            </a>
+            <h1>Terms of Membership</h1>
+            <p class="subtitle">What you get when you become a Play Piano Member.</p>
+        </header>
+
+        <main class="policy-content">
+
+            <h2>1. The Lifetime Unlock</h2>
+            <p>Purchasing a Play Piano Membership is a single, one-time commitment—<strong>not a subscription</strong>. By becoming a member today, you are securing full, unrestricted access to the app for eternity.</p>
+            <p>This includes instant access to the entire current repertoire, allowing you to study and play the works of Gustav Mahler, Frédéric Chopin, Wolfgang Amadeus Mozart, Joseph Haydn, Ludwig van Beethoven, Johann Sebastian Bach, Pyotr Ilyich Tchaikovsky, Felix Mendelssohn, and Richard Wagner. Furthermore, you are guaranteed access to <strong>all future music, features, and composers</strong> added to the app. You will never be charged again for new content additions.</p>
+
+            <h2>2. Offline Premium Usage & The 30-Day Cache</h2>
+            <p>Because Play Piano is built to respect your privacy and function seamlessly on your music stand without constant internet access, your Premium purchase status is securely cached locally on your device.</p>
+            <ul>
+                <li>You can use all Premium features completely offline for up to <strong>30 consecutive days</strong>.</li>
+                <li>To refresh this cache, the app simply requires a brief internet connection to ping the Google Play Store and verify your purchase status. Once verified, your 30-day offline window resets automatically.</li>
+            </ul>
+
+            <h2>3. Zero Data Collection</h2>
+            <p>Your membership does not come at the cost of your privacy. Play Piano collects <strong>absolutely no personal or usage data</strong>. We do not require you to create an account, we do not monitor which pieces you play, and we do not use background telemetry. All financial transactions are handled entirely by Google's billing infrastructure. We never see, process, or store your credit card or identity data.</p>
+
+            <h2>4. Platform Scope</h2>
+            <p>Play Piano is currently developed exclusively for Android mobile and tablet devices. Due to the physical requirements of using digital sheet music at an instrument, the application is tailored for these environments and is not supported on desktop web browsers.</p>
+
+            <h2>5. Contact</h2>
+            <p>If you have any questions regarding your membership, your purchase, or the app's functionality, please reach out directly at: <a href="mailto:jozewsro@gmail.com">jozewsro@gmail.com</a></p>
+
+        </main>
+
+        <div class="commitment-banner">
+            <h2>🛡️ The Offline-First Promise</h2>
+            <p><strong>We do not want your data.</strong> Play Piano is designed strictly as a mobile and tablet application built to sit on your piano stand. It is an offline-first experience. We do not spy on you, we collect zero telemetry, and you can confidently use the core features of this app completely offline.</p>
+        </div>
+
+    </div>
+
+</body>
+</html>

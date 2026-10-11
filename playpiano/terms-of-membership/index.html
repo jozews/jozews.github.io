@@ -76,20 +76,39 @@
             padding: 40px;
             border-radius: var(--border-radius);
             box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-            margin-bottom: 40px;
+            margin-bottom: 30px;
         }
 
         h2 {
             font-size: 1.75rem;
-            margin: 2.5rem 0 1rem;
+            margin: 0 0 1.5rem;
             border-bottom: 2px solid var(--bg-color);
             padding-bottom: 0.5rem;
             color: var(--text-main);
         }
         
-        h2:first-of-type { margin-top: 0; }
+        .policy-list {
+            padding-left: 20px;
+            margin-bottom: 0;
+        }
+
+        .policy-list li {
+            margin-bottom: 1.5rem;
+            color: var(--text-main);
+        }
+        
+        .policy-list li:last-child {
+            margin-bottom: 0;
+        }
+
+        .policy-list h3 {
+            font-size: 1.25rem;
+            margin: 0 0 0.5rem;
+            color: var(--text-main);
+        }
 
         p { margin-bottom: 1rem; color: var(--text-main); }
+        p:last-child { margin-bottom: 0; }
 
         strong { color: var(--text-main); font-weight: 700; }
 
@@ -101,6 +120,21 @@
         }
         
         a:hover { opacity: 0.8; }
+
+        .footnotes {
+            padding: 0 20px;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .footnotes p {
+            margin-bottom: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        .footnotes strong {
+            color: var(--text-muted);
+        }
 
         @media (max-width: 600px) {
             .policy-content { padding: 24px; }
@@ -120,18 +154,29 @@
         </header>
 
         <main class="policy-content">
-
-            <h2>Unlimited Repertoire</h2>
-            <p>Play Piano members have full acess to the entire repertoire available and made available in future releases.</p>
-
-            <h2>Feature Access</h2>
-            <p>Play Piano members have access to all features of the application, as well as the vast majority of future updates and enhancements aimed at improving your Play Piano experience.</p>
-            <p>Play Piano reserves the right to introduce capabilities as separate, non-standard offerings. This specifically applies to features that may require server infrastructure, continuous maintenance, or recurrent costs to operate</p>
-
-            <h2>Offline Usage</h2>
-            <p>Play Piano members will continue to enjoy the offline experience. The app may only require a connection to perform a cache refresh after more than 30 days of a device being offline.</p>
-
+            <h2>Membership Agreement</h2>
+            
+            <ul class="policy-list">
+                <li>
+                    <h3>Unlimited Repertoire</h3>
+                    <p>Play Piano members have full access to the entire repertoire available and made available in future releases.</p>
+                </li>
+                <li>
+                    <h3>Feature Access</h3>
+                    <p>Play Piano members have access to all features of the application, as well as the vast majority of future updates and enhancements aimed at improving your Play Piano experience.</p>
+                    <p>Play Piano reserves the right to introduce capabilities as separate, non-standard offerings. This specifically applies to features that may require server infrastructure, continuous maintenance, or recurrent costs to operate.</p>
+                </li>
+                <li>
+                    <h3>Offline Usage</h3>
+                    <p>Play Piano members will continue to enjoy the offline experience. The app may only require a connection to perform a cache refresh after more than 30 days of a device being offline.</p>
+                </li>
+            </ul>
         </main>
+
+        <div class="footnotes">
+            <p>For information regarding data usage and our offline-first principles, please review our <a href="index.html">Privacy Policy</a>.</p>
+            <p>If you have any questions regarding your membership, please reach out directly at: <a href="mailto:jozewsro@gmail.com">jozewsro@gmail.com</a></p>
+        </div>
 
     </div>
 
